@@ -75,15 +75,20 @@ function nwm_map_editor() {
                             <input id="nwm-post-title" type="text" class="textinput"> <input id="find-nwm-title" class="button-primary" type="button" name="text" value="<?php _e( 'Search', 'nwm' ); ?>" />
                             <div id="nwm-search-link"><?php _e( 'Link: ', 'nwm' ); ?> <span></span></div>
                              <input id="nwm-search-nonce" type="hidden" value="<?php echo wp_create_nonce('nwm_nonce_search'); ?>"  />
-                        </div>
+	                </div 
                         
                         <div id="nwm-custom-text" class="nwm-marker-option nwm-hide">
                             <p><label for="nwm-custom-title"><?php _e( 'Title:', 'nwm' ); ?></label><input id="nwm-custom-title" type="text" class="textinput"></p>
                             <p><label for="nwm-custom-url"><?php _e( 'Link:', 'nwm' ); ?></label><input id="nwm-custom-url" type="url" placeholder="http://" class="textinput"></p>
                             <p class="nwm-textarea-wrap">
-                                <label for="nwm-custom-desc"><?php _e( 'Description:', 'nwm' ); ?></label>
+				     // open link in new tab
+				<label for="nwm-new_tab"><?php _e( 'open link in new tab?', 'nwm' ); ?></label>
+				<input id="nwm-new_tab" type="checkbox" name="nwm-new_tab" value="" <?php checked( $options['nwm-new_tab'], true ); ?> />
+                                
+				<label for="nwm-custom-desc"><?php _e( 'Description:', 'nwm' ); ?></label>
                                 <textarea id="nwm-custom-desc" data-length="25" cols="5" rows="5"></textarea>
                                 <em id="char-limit" class="nwm-desc"><?php _e( 'Keep it short, 25 words remaining.', 'nwm' ); ?></em>
+				    
                             </p>
                         </div>
                     </div>
@@ -253,6 +258,9 @@ function nwm_build_tr_list( $collected_destinations ) {
 					'</td>'."\n";			
 		$output .= '</tr>'."\n";
 		
+		$output['nwm-new_tab']     =  <a href="nwm-custom-url" target="_blank"> Link </a>
+
+
 		$i++;
 	}
 	
